@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 탈퇴 | WarriorDining</title>
+    <link rel="stylesheet" href="/css/myPageDelete.css">
+    <link rel="stylesheet" href="/css/default.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="header-content">
+            <a href="#" class="logo">WarriorDining</a>
+            <div class="auth-buttons">
+                <a href="#">로그인</a>
+                <a href="#">회원 가입</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="nav-bar">
+    <div class="container">
+        <ul>
+            <li><a href="/topreservation">예약 TOP</a></li>
+            <li><a href="#">이달의 맛집</a></li>
+            <li><a href="/reservation">예약</a></li>
+            <li><a href="#">문의</a></li>
+            <li class="search-bar">
+                <input type="text" placeholder="지역 또는 레스토랑 검색">
+                <button>검색</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<main class="container">
+    <div class="content">
+        <section id="delete-account">
+            <h1>회원 탈퇴</h1>
+            <div class="confirmation-section">
+                <p class="confirmation-message">회원 탈퇴를 하시려면 비밀번호를 입력한 후, 아래 버튼을 클릭하세요. 이 작업은 되돌릴 수 없습니다.</p>
+                <form id="delete-account-form" action="delete_account_processing" method="post">
+                    <label for="password">비밀번호 확인</label>
+                    <input type="password" id="password" name="password" class="large-input" required>
+
+                    <div class="confirmation-buttons">
+                        <button type="submit" class="delete-button">회원 탈퇴</button>
+                        <button type="button" onclick="window.location.href='edit'">취소</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 WarriorDining. All rights reserved.</p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('delete-account-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const password = document.getElementById('password').value;
+
+            if (!password) {
+                alert('비밀번호를 입력해주세요.');
+                return;
+            }
+
+            if (confirm('정말로 회원 탈퇴를 하시겠습니까? 이 작업은 되돌릴 수 없습니다.')) {
+            	// 사용자에게 "정말로 회원 탈퇴를 하시겠습니까?"라는 메시지를 띄우고,ㄴ 사용자가 "확인"을 클릭하면 true, "취소"를 클릭하면 false를 반환
+                // true일 경우에만 회원 탈퇴 절차가 진행
+                const formData = new FormData(this);
+
+                fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json',
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                    	// response.ok는 응답 상태가 200~299 범위 내에 있을 때 true를 반환
+                        alert('회원 탈퇴가 완료되었습니다.');
+                        window.location.href = '/';
+                    } else {
+                        alert('회원 탈퇴 처리에 실패했습니다. 다시 시도해 주세요.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('회원 탈퇴 처리 중 오류가 발생했습니다.');
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>

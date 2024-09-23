@@ -1,0 +1,80 @@
+/* 내정보 섹션의 너비 조정 */
+.content {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    height: calc(100vh - 100px); /* 전체 높이에서 header와 footer의 높이를 제외한 높이 */
+    overflow-y: auto; /* 콘텐츠가 길어질 경우 수직 스크롤 추가 */
+    max-width: 1200px; /* 최대 너비 설정 */
+    margin: 0 auto; /* 중앙 정렬 */
+}
+
+/* 내정보 섹션 스타일 */
+#profile {
+    width: 100%; /* 섹션을 전체 너비로 설정 */
+    max-width: 800px; /* 최대 너비 설정 */
+    margin: 0 auto; /* 중앙 정렬 */
+}
+
+#profile h1 {
+    text-align: center; /* 제목을 중앙 정렬 */
+    margin-bottom: 20px; /* 제목과 폼 사이의 여백 설정 */
+    font-size: 2em; /* 제목 글자 크기 조정 */
+    color: #333; /* 제목 색상 설정 */
+}
+
+.content form {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.content fieldset {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.content legend {
+    font-weight: bold;
+    padding: 0 5px;
+    font-size: 18px; /* 필드셋 레전드 글자 크기 조정 */
+}
+
+.content label {
+    display: block;
+    margin: 10px 0 5px;
+    font-size: 16px; /* 레이블 글자 크기 조정 */
+    font-weight: normal; /* 레이블 글자 굵기 조정 */
+}
+
+.content input[type="text"],
+.content input[type="email"],
+.content input[type="tel"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    font-size: 16px; /* 입력 필드 글자 크기 조정 */
+}
+
+.content a.button {
+    display: inline-block;
+    background-color: #ff6f61; /* 기본 배경색 */
+    color: #fff; /* 글씨 색상 */
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px; /* 버튼 글자 크기 조정 */
+    margin: 10px 0;
+}
